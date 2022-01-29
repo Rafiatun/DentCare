@@ -1,10 +1,11 @@
 
 import os
 from pathlib import Path
+
+from os.path import join, dirname
 from dotenv import load_dotenv
 import django_heroku
 import dj_database_url
-
 
 load_dotenv()
 
