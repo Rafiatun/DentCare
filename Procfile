@@ -1,1 +1,1 @@
-web: Tooth.wsgi
+web: gunicorn Tooth.wsgi
