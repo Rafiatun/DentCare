@@ -2,6 +2,9 @@
 import os
 from pathlib import Path
 from dotenv import load_dotenv
+import django_heroku
+import dj_database_url
+
 
 load_dotenv()
 
@@ -34,6 +37,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware'
 ]
 
 ROOT_URLCONF = 'Tooth.urls'
@@ -101,7 +105,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -111,3 +115,5 @@ EMAIL_PORT= 587
 EMAIL_HOST_USER= os.getenv('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD= os.getenv('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS= True
+
+django_heroku.settings(locals())
